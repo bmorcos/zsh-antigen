@@ -1,28 +1,19 @@
-ZBASE=$HOME/.zsh-antigen
-source $ZBASE/antigen/antigen.zsh
+source $HOME/.zsh-antigen/antigen/antigen.zsh
 
-# Default to prezto packages
-antigen use prezto
+#default plugins
+antigen use oh-my-zsh
 
-# Modules
-antigen bundle sorin-ionescu/prezto modules/helper  # required for Git module (according to antigen)
-antigen bundle sorin-ionescu/prezto modules/environment # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/terminal # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/editor # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/history # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/directory # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/spectrum # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/utility # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/completion # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/prompt # default module in prezto
-antigen bundle sorin-ionescu/prezto modules/archive
-antigen bundle sorin-ionescu/prezto modules/git
-antigen bundle sorin-ionescu/prezto modules/history-substring-search
-antigen bundle sorin-ionescu/prezto modules/syntax-highlighting
+#plugins
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle extract
+antigen bundle z
+antigen bundle zdharma/fast-syntax-highlighting
+antigen-bundle zsh-users/zsh-history-substring-search
 
 # Theme
 # antigen use oh-my-zsh
-antigen theme --loc=$ZBASE/the-one-theme.zsh-theme
+antigen theme bmorcos/zsh-antigen the-one-theme
 
 # Tell antigen to use this config
 antigen apply
