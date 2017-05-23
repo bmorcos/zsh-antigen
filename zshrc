@@ -1,6 +1,7 @@
-source $HOME/.zsh-antigen/antigen/antigen.zsh
+ZBASE=/home/ben/.zsh-antigen
+source $ZBASE/antigen/antigen.zsh
 
-setopt CORRECT
+setopt correct
 
 #default plugins
 antigen use oh-my-zsh
@@ -14,8 +15,7 @@ antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 
 # Theme
-# antigen use oh-my-zsh
-antigen theme bmorcos/zsh-antigen the-one-theme
+antigen theme $ZBASE "the-one-theme" --no-local-clone
 
 # Tell antigen to use this config
 antigen apply
