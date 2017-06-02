@@ -19,3 +19,6 @@ antigen theme $ZBASE "the-one-theme" --no-local-clone
 
 # Tell antigen to use this config
 antigen apply
+
+alias diff="colordiff"
+alias go="gnome-open"

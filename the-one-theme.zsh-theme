@@ -10,7 +10,7 @@ MAGENTA_NB="%{$fg_no_bold[magenta]%}"
 
 #different char if root
 function prompt_char {
-    if [ $UID -eq 0 ]; then echo "$RED_NB√"; else echo "$BLUE_NB∴"; fi
+    if [ $UID -eq 0 ]; then echo "$RED_NB√"; else echo "$MAGENTA_NB∴"; fi
 }
 
 function get_pwd() {
@@ -23,10 +23,10 @@ PROMPT='$YELLOW_NB%* $GREEN%n@%m $BLUE$(get_pwd) $CYAN_NB$(git_prompt_info)$(git
 ZSH_THEME_GIT_PROMPT_ADDED="$MAGENTA_NB+"
 ZSH_THEME_GIT_PROMPT_AHEAD="$GREEN_NB↑"
 ZSH_THEME_GIT_PROMPT_CLEAN="$GREEN_NB≡"
-ZSH_THEME_GIT_PROMPT_DELETED="$RED_NB×"
+ZSH_THEME_GIT_PROMPT_DELETED="$YELLOW_NB×"
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_DIVERGED="$MAGENTA_NB←→"
-ZSH_THEME_GIT_PROMPT_MODIFIED="$YELLOW_NB*"
+ZSH_THEME_GIT_PROMPT_MODIFIED="$RED_NB*"
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_BEHIND="$RED_NB↓"
