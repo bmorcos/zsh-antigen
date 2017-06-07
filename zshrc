@@ -22,3 +22,5 @@ antigen apply
 
 alias diff="colordiff"
 alias go="gnome-open"
+
+export PATH="/home/ben/anaconda3/bin:$PATH"
