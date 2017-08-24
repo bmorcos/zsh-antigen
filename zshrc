@@ -1,4 +1,4 @@
-ZBASE=/home/ben/.zsh-antigen
+ZBASE=$HOME/.zsh-antigen
 source $ZBASE/antigen/antigen.zsh
 
 setopt correct
@@ -20,7 +20,5 @@ antigen theme $ZBASE "the-one-theme" --no-local-clone
 # Tell antigen to use this config
 antigen apply
 
-alias diff="colordiff"
-alias go="gnome-open"
-
-export PATH="/home/ben/anaconda3/bin:$PATH"
+#alias
+source $HOME/.alias
