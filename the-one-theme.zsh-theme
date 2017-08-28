@@ -7,10 +7,11 @@ RED_NB="%{$fg_no_bold[red]%}"
 RESET="%{$reset_color%}"
 YELLOW_NB="%{$fg_no_bold[yellow]%}"
 MAGENTA_NB="%{$fg_no_bold[magenta]%}"
+MAGENTA="%{$fg_bold[magenta]%}"
 
 #different char if root
 function prompt_char {
-    if [ $UID -eq 0 ]; then echo "$RED_NB√"; else echo "$MAGENTA_NB∴"; fi
+    if [ $UID -eq 0 ]; then echo "$RED_NB√"; else echo "$MAGENTA∴"; fi
 }
 
 function get_pwd() {
