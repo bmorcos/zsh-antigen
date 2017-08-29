@@ -1,9 +1,11 @@
 BLUE="%{$fg_bold[blue]%}"
 BLUE_NB="%{$fg_no_bold[blue]%}"
 CYAN_NB="%{$fg_no_bold[cyan]%}"
+CYAN="%{$fg_bold[cyan]%}"
 GREEN="%{$fg_bold[green]%}"
 GREEN_NB="%{$fg_no_bold[green]%}"
 RED_NB="%{$fg_no_bold[red]%}"
+RED="%{$fg_bold[red]%}"
 RESET="%{$reset_color%}"
 YELLOW_NB="%{$fg_no_bold[yellow]%}"
 MAGENTA_NB="%{$fg_no_bold[magenta]%}"
@@ -11,7 +13,13 @@ MAGENTA="%{$fg_bold[magenta]%}"
 
 #different char if root
 function prompt_char {
-    if [ $UID -eq 0 ]; then echo "$RED_NB√"; else echo "$MAGENTA∴"; fi
+    if [ $UID -eq 0 ]; then
+        echo "$RED√"
+    elif [[ -n $SSH_CONNECTION ]]; then
+        echo "$CYAN∵"
+    else 
+        echo "$MAGENTA∴"
+    fi
 }
 
 function get_pwd() {
