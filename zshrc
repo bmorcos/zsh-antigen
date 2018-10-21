@@ -2,6 +2,7 @@ ZBASE=$HOME/.zsh-antigen
 source $ZBASE/antigen/antigen.zsh
 
 setopt correct
+setopt prompt_subst
 
 #default plugins
 antigen use oh-my-zsh
