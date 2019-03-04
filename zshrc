@@ -14,6 +14,7 @@ antigen bundle extract
 antigen bundle z
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle hlissner/zsh-autopair
 
 # Theme
 antigen theme $ZBASE "the-one-theme" --no-local-clone
