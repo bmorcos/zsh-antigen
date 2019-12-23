@@ -7,6 +7,10 @@ setopt prompt_subst
 #default plugins
 antigen use oh-my-zsh
 
+# Modify fast syntax highlighting theme
+typeset -A FAST_HIGHLIGHT_STYLES
+FAST_HIGHLIGHT_STYLES[defaultpath-to-dir]="fg=magenta,bold"
+
 #plugins
 antigen bundle git
 antigen bundle command-not-found
