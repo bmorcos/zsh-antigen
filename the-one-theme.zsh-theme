@@ -17,7 +17,7 @@ function prompt_char {
         echo "$RED√"
     elif [[ -n $SSH_CONNECTION ]]; then
         echo "$CYAN∵"
-    else 
+    else
         echo "$MAGENTA∴"
     fi
 }
@@ -42,3 +42,13 @@ ZSH_THEME_GIT_PROMPT_BEHIND="$RED_NB↓"
 ZSH_THEME_GIT_PROMPT_UNMERGED="$RED_NB→←"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="$YELLOW_NB?"
 ZSH_THEME_GIT_PROMPT_STASHED="$CYAN_NB•"
+
+# Show error code in right prompt, if any
+function exit_code_prompt() {
+  local EXIT_CODE=$?
+  if [[ $EXIT_CODE -ne 0 ]]; then
+    echo "%{$fg_bold[red]%}$EXIT_CODE%{$reset_color%}"
+  fi
+}
+
+RPROMPT='$(exit_code_prompt)'
