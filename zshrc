@@ -1,5 +1,6 @@
 ZBASE=$HOME/.zsh-antigen
 source $ZBASE/antigen/antigen.zsh
+source $ZBASE/the-one-theme.zsh-theme
 
 setopt correct
 setopt prompt_subst
