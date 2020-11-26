@@ -13,20 +13,45 @@ MAGENTA="%{$fg_bold[magenta]%}"
 
 #different char if root
 function prompt_char {
-    if [ $UID -eq 0 ]; then
-        echo "$RED√"
-    elif [[ -n $SSH_CONNECTION ]]; then
-        echo "$CYAN∵"
-    else
-        echo "$MAGENTA∴"
-    fi
+  if [ $UID -eq 0 ]; then
+    echo "$RED√"
+  elif [[ -n $SSH_CONNECTION ]]; then
+    echo "$CYAN∵"
+  else
+    echo "$MAGENTA∴"
+  fi
 }
 
-function get_pwd() {
-  echo "${PWD/$HOME/~}"
+function prompt_dir {
+  OFFSET=60  # Leave room for time, git, commands, etc. in prompt
+  MAX_DIR_LEN=$(($COLUMNS - $OFFSET))
+  DIR_PREPEND="..."
+
+  # Handle extra chars from conda env
+  if [[ $PROMPT == \(* ]]; then
+    # awk didn't like F'[0-9]' to split on time so settled for this
+    CONDA_ENV=$(echo $PROMPT | awk -F\) '{print $1}')
+    LEN_ENV=$(echo -n $CONDA_ENV | wc -m)
+    MAX_DIR_LEN=$(($MAX_DIR_LEN - $LEN_ENV - 2))  # +2 for right bracket + space
+  fi
+
+  DIR=$(echo "${PWD/$HOME/~}")
+
+  if [ $(echo -n $DIR | wc -m) -gt $MAX_DIR_LEN ]; then
+    # Read in MAX_DIR_LEN chars from the pwd starting at leaf dir
+    echo $DIR | rev | read -k $MAX_DIR_LEN -u 0 P_DIR
+
+    # Drop any partial dir names from the root side and add prepend str
+    P_DIR=$(echo $P_DIR | rev | sed "s/^[^\/]*\//${DIR_PREPEND}\//")
+  else
+    P_DIR=$DIR
+  fi
+
+  echo "$P_DIR"
 }
 
-PROMPT='$YELLOW_NB%* $GREEN%n@%m $BLUE$(get_pwd) $CYAN_NB$(git_prompt_info)$(git_prompt_status) $(prompt_char) $RESET'
+
+PROMPT='$YELLOW_NB%* $GREEN%n@%m $BLUE$(prompt_dir) $CYAN_NB$(git_prompt_info)$(git_prompt_status) $(prompt_char) $RESET'
 
 # git settings
 ZSH_THEME_GIT_PROMPT_ADDED="$MAGENTA_NB+"
