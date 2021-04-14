@@ -20,6 +20,7 @@ antigen bundle z
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle hlissner/zsh-autopair
+antigen bundle RobSis/zsh-reentry-hook
 
 # Theme
 antigen theme $ZBASE "the-one-theme" --no-local-clone
