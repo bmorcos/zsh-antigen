@@ -30,3 +30,6 @@ antigen apply
 
 #alias
 source $HOME/.alias
+
+# Suppress some TF warnings
+export TF_CPP_MIN_LOG_LEVEL=1
