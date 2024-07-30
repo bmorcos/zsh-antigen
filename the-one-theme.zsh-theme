@@ -51,7 +51,25 @@ function prompt_dir {
 }
 
 
-PROMPT='$YELLOW_NB%* $GREEN%n@%m $BLUE$(prompt_dir) $CYAN_NB$(git_prompt_info)$(git_prompt_status) $(prompt_char) $RESET'
+# Handle devcon name, kubernetes, later add venv? will this conflict w conda?
+function prefix {
+  PREFIX=""
+
+  # Handle kubectx (if plugin available and active context)
+  # Use custom map in .zshrc to shorten context names
+  if [[ "$(whence -w kubectx_prompt_info)" == *function ]] && [[ $(kubectx_prompt_info | wc -c) -gt 0 ]]; then
+    PREFIX+="($(kubectx_prompt_info)"
+    if [[ -n "$KNS" ]]; then
+        PREFIX+=" $CYAN_NB$KNS$RESET"
+    fi
+    PREFIX+=") "
+  fi
+
+  echo "$PREFIX"
+}
+
+
+PROMPT='$(prefix)$YELLOW_NB%* $GREEN%n@%m $BLUE$(prompt_dir) $CYAN_NB$(git_prompt_info)$(git_prompt_status) $(prompt_char) $RESET'
 
 # git settings
 ZSH_THEME_GIT_PROMPT_ADDED="$MAGENTA_NB+"
